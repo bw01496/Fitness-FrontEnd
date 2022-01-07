@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 const { REACT_APP_API_URL = "https://fitnesstrac-kr.herokuapp.com/api" } =
   process.env;
 
 const Register = ({ setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   return (
     <>
@@ -26,11 +28,11 @@ const Register = ({ setToken }) => {
             const respObj = await resp.json();
             console.log(respObj);
             setToken(respObj.data.token);
+            if (respObj.data.token) {
+              navigate("/profile");
+            }
           } catch (error) {
             console.error(error);
-            {
-              /* if statement add navigate to profile later*/
-            }
           }
         }}
       >

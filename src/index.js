@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
 import Routines from "./components/Routines";
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -12,9 +18,10 @@ const App = () => {
   const [routines, setRoutines] = useState([]);
   const [token, setToken] = useState();
   const [activities, setActivities] = useState([]);
-  const [userId, setUserId] = useState("");
+  const [loggedIn, setLoggedIn] = useState("");
   const [profile, setProfile] = useState({});
   const [user, setUsers] = useState("");
+  const navigate = useNavigate();
 
   return (
     <>
@@ -23,12 +30,22 @@ const App = () => {
         <Link to="/">Home</Link>
         <br></br>
         <Link to="api/routines">Routines</Link>
+        {""}
         <br></br>
-        <Link to="api/myroutines">My Routines</Link>
+        {loggedIn ? <Link to="api/myroutines">My Routines</Link> : null}
+        {loggedIn ? " " : null}
         <br></br>
         <Link to="api/activities">Activities</Link>
         <br></br>
         <Link to="/api/users/login">Login</Link>
+        <button
+          className={token ? "" : "LoggedOut"}
+          onClick={() => {
+            localStorage.removeItem("token");
+            setLoggedIn(false);
+            navigate("/");
+          }}
+        ></button>
         <br></br>
         <Link to="/api/users/register">Register</Link>
       </header>
@@ -54,12 +71,20 @@ const App = () => {
               activities={activities}
               token={token}
               settoken={setToken}
+              loggedIn={loggedIn}
             />
           }
         />
         <Route
-          path="/api/users/login"
-          element={<Login setToken={setToken} setUsers={setUsers} />}
+          path="api/users/:method"
+          element={
+            <Login
+              setToken={setToken}
+              setUsers={setUsers}
+              setLoggedIn={setLoggedIn}
+              loggedIn={loggedIn}
+            />
+          }
         />
         <Route
           path="/api/users/register"
@@ -70,7 +95,7 @@ const App = () => {
           element={
             <Profile
               username={user}
-              setUserId={setUserId}
+              setUsers={setUsers}
               profile={profile}
               setProfile={setProfile}
               token={token}
