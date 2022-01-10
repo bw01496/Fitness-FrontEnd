@@ -7,7 +7,7 @@ const { REACT_APP_API_URL } = process.env;
 const Login = ({ setToken, setUsers, loggedIn, setLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
+  // const [passwordConfirm, setPasswordConfirm] = useState("");
   const navigate = useNavigate();
   const [isMatched, setIsMatched] = useState(false);
   const params = useParams();
@@ -21,7 +21,7 @@ const Login = ({ setToken, setUsers, loggedIn, setLoggedIn }) => {
         setLoggedIn(false);
       } else {
         setLoggedIn(true);
-        navigate("/api/activities");
+        navigate("/api/myroutines");
       }
     }
   }
@@ -119,9 +119,9 @@ const Login = ({ setToken, setUsers, loggedIn, setLoggedIn }) => {
             </h4>
           </div>
         ) : null}
-        {/* <div className={isMatched ? "" : "noMatch"}>
+        <div className={isMatched ? "" : "noMatch"}>
           <h4>Your passwords don't match.</h4>
-        </div> */}
+        </div>
       </>
     );
   } else {

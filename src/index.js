@@ -12,15 +12,17 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Activities from "./components/Activities";
 import Register from "./components/Register";
-import Profile from "./components/Profile";
+// import Profile from "./components/Profile";
+import Myroutines from "./components/Myroutines";
 
 const App = () => {
   const [routines, setRoutines] = useState([]);
   const [token, setToken] = useState();
   const [activities, setActivities] = useState([]);
   const [loggedIn, setLoggedIn] = useState("");
-  const [profile, setProfile] = useState({});
+  // const [profile, setProfile] = useState({});
   const [user, setUsers] = useState("");
+  const [myRoutines, setMyRoutines] = useState([]);
   const navigate = useNavigate();
 
   return (
@@ -91,13 +93,14 @@ const App = () => {
           element={<Register setToken={setToken} setUsers={setUsers} />}
         />
         <Route
-          path="/profile"
+          path="api/myroutines"
           element={
-            <Profile
-              username={user}
-              setUsers={setUsers}
-              profile={profile}
-              setProfile={setProfile}
+            <Myroutines
+              setMyRoutines={setMyRoutines}
+              activities={activities}
+              myRoutines={myRoutines}
+              user={user}
+              loggedIn={loggedIn}
               token={token}
             />
           }
