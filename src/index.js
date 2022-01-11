@@ -47,7 +47,9 @@ const App = () => {
             setLoggedIn(false);
             navigate("/");
           }}
-        ></button>
+        >
+          Log Out
+        </button>
         <br></br>
         <Link to="/api/users/register">Register</Link>
       </header>
@@ -60,7 +62,6 @@ const App = () => {
               setRoutines={setRoutines}
               routines={routines}
               token={token}
-              settoken={setToken}
             />
           }
         />

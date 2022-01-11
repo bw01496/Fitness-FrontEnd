@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { callApi } from "../utils";
-// import { Link } from "react-router-dom";
-
-const { REACT_APP_API_URL } = process.env;
+const APIURL = `https://fitnesstrac-kr.herokuapp.com/api`;
 
 const Myroutines = ({
   user,
@@ -25,7 +22,7 @@ const Myroutines = ({
   const [editRoutineGoal, setEditRoutineGoal] = useState("");
 
   const fetchRoutines = async () => {
-    const resp = await fetch(`${REACT_APP_API_URL}/routines`);
+    const resp = await fetch(`${APIURL}/routines`);
     const data = await resp.json();
     if (data) {
       setMyRoutines(data);
@@ -38,7 +35,7 @@ const Myroutines = ({
 
   const createRoutine = async () => {
     try {
-      const resp = await fetch(`${REACT_APP_API_URL}/routines`, {
+      const resp = await fetch(`${APIURL}/routines`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,20 +56,17 @@ const Myroutines = ({
 
   const addActivities = async () => {
     try {
-      const resp = await fetch(
-        `${REACT_APP_API_URL}/routines/${routineId}/activities`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            activityId: activityId,
-            count: count,
-            duration: duration,
-          }),
-        }
-      );
+      const resp = await fetch(`${APIURL}/routines/${routineId}/activities`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          activityId: activityId,
+          count: count,
+          duration: duration,
+        }),
+      });
       fetchRoutines();
       setActivityFields(false);
     } catch (error) {
@@ -81,10 +75,8 @@ const Myroutines = ({
   };
 
   const handleEditRoutine = async (routineId) => {
-    console.log(editRoutineName);
-    console.log(editRoutineGoal);
     try {
-      const resp = await fetch(`${REACT_APP_API_URL}/routines/${routineId}`, {
+      const resp = await fetch(`${APIURL}/routines/${routineId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +88,7 @@ const Myroutines = ({
         }),
       });
       const data = await resp.json();
-      console.log(data);
+
       fetchRoutines();
     } catch (error) {
       console.error(error);
@@ -104,9 +96,8 @@ const Myroutines = ({
   };
 
   const handleDeleteRoutine = async (routineId) => {
-    console.log(routineId);
     try {
-      const resp = await fetch(`${REACT_APP_API_URL}/routines/${routineId}`, {
+      const resp = await fetch(`${APIURL}/routines/${routineId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -122,7 +113,7 @@ const Myroutines = ({
   const handleEditActivity = async (routineActivityId) => {
     try {
       const resp = await fetch(
-        `${REACT_APP_API_URL}/routine_activities/${routineActivityId}`,
+        `${APIURL}/routine_activities/${routineActivityId}`,
         {
           method: "PATCH",
           headers: {
@@ -146,7 +137,7 @@ const Myroutines = ({
   const handleDeleteActivity = async (routineActivityId) => {
     try {
       const resp = await fetch(
-        `${REACT_APP_API_URL}/routine_activities/${routineActivityId}`,
+        `${APIURL}/routine_activities/${routineActivityId}`,
         {
           method: "DELETE",
           headers: {

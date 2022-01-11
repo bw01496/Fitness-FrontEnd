@@ -1,20 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
 
-* {
-  background-color: red;
-}
-
 body {
   font-family: "Space Grotesk", sans-serif;
-  background: rgb(174, 200, 238);
+  background: rgb(208, 238, 174);
   background: radial-gradient(
     circle,
-    rgba(174, 200, 238, 1) 7%,
-    rgba(103, 186, 173, 1) 100%
+    rgb(206, 225, 252) 7%,
+    rgb(106, 224, 207) 100%
   );
 }
 a {
-  background-color: rgb(33, 120, 139);
+  background-color: rgb(167, 96, 177);
   border: none;
   color: lightgoldenrodyellow;
   padding: 15px 32px;
@@ -30,7 +26,7 @@ a {
 }
 
 h1 {
-  border-bottom: grey solid 10px;
+  border-bottom: rgb(105, 103, 103) solid 10px;
   justify-content: center;
   display: flex;
   padding-bottom: 5px;
@@ -51,13 +47,15 @@ h3 {
   display: flex;
   font-size: 40px;
 }
+h4,
+h5 {
+  justify-content: center;
+  display: flex;
+}
 p {
   justify-content: center;
   display: flex;
   font-size: 22px;
-}
-input {
-  margin-left: 270px;
 }
 
 button {
@@ -70,35 +68,4 @@ button:hover {
   padding: 15px;
   border-radius: 15px;
   box-shadow: inset 0 0 8px #f9f8fc;
-}
-
-.buttonMessage {
-  background-color: purple;
-  border: none;
-  color: lightgoldenrodyellow;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 12px;
-  justify-content: center;
-  display: flex;
-  display: grid;
-}
-
-.deleteButton {
-  background-color: rgb(142, 19, 19);
-  border: none;
-  color: lightgoldenrodyellow;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 12px;
-  justify-content: center;
-  margin-bottom: 20px;
-  display: block;
-  width: 100%;
 }
