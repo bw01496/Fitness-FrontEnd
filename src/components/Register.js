@@ -44,7 +44,7 @@ const Register = ({ setToken }) => {
         ></input>
         <br></br>
         <input
-          type="text"
+          type="password"
           placeholder="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}

@@ -67,7 +67,7 @@ const Login = ({ setToken, setUsers, loggedIn, setLoggedIn }) => {
           <hr></hr>
 
           <input
-            type="text"
+            type="password"
             placeholder="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -79,7 +79,7 @@ const Login = ({ setToken, setUsers, loggedIn, setLoggedIn }) => {
           <hr></hr>
           {params.method === "register" ? (
             <input
-              type="text"
+              type="password"
               placeholder="password"
               value={passwordConfirm}
               onChange={(event) => setPasswordConfirm(event.target.value)}
