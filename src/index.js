@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
@@ -12,7 +12,6 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Activities from "./components/Activities";
 import Register from "./components/Register";
-// import Profile from "./components/Profile";
 import Myroutines from "./components/Myroutines";
 
 const App = () => {
@@ -20,7 +19,6 @@ const App = () => {
   const [token, setToken] = useState();
   const [activities, setActivities] = useState([]);
   const [loggedIn, setLoggedIn] = useState("");
-  // const [profile, setProfile] = useState({});
   const [user, setUsers] = useState("");
   const [myRoutines, setMyRoutines] = useState([]);
   const navigate = useNavigate();
